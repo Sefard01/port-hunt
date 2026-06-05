@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Assets/images/favicon.png">
+    <title>PortHunt Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <span class="icon-p">P</span>
+            </div>
+            <span class="logo-text">Port<span class="highlight">Hunt</span></span>
+        </div>
+        <div class="nav-right">
+            <nav class="nav-links">
+                <a href="#" class="nav-item">Events</a>
+                <a href="#" class="nav-item">Hackathons</a>
+                <a href="#" class="nav-item">Gallery</a>
+                <a href="#" class="nav-item">Notice</a>
+            </nav>
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" placeholder="Search..." class="search-input">
+            </div>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-login">Login</a>
+                <a href="#" class="btn btn-register">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-container">
+
+        <section class="hero-block">
+            
+            <div class="hero-main-widget">
+                <div class="date-panel">
+                    <h1 class="date-number" id="hero-day">14</h1>
+                    <div class="date-meta">
+                        <p class="meta-month" id="hero-month">September</p>
+                        <p class="meta-day" id="hero-weekday">Wednesday</p>
+                        <p class="meta-status">(Featured)</p>
+                    </div>
+                </div>
+
+                <div class="control-strip">
+                    <button class="strip-arrow" id="prev-btn"><i class="fa-solid fa-chevron-up"></i></button>
+                    <div class="strip-numbers">
+                        <div class="num-item active" data-index="0">1</div>
+                        <div class="num-item" data-index="1">2</div>
+                        <div class="num-item" data-index="2">3</div>
+                        <div class="num-item" data-index="3">4</div>
+                        <div class="num-item" data-index="4">5</div>
+                    </div>
+                    <button class="strip-arrow" id="next-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+
+                <div class="display-panel">
+                    <img id="hero-image" src="" alt="Featured Event Backdrop">
+                    
+                    <div class="info-overlay-card">
+                        <div class="card-header">
+                            <h2 id="hero-title">RADIOHEAD LIVE</h2>
+                            <h3 id="hero-subtitle">IN CONCERT</h3>
+                        </div>
+                        <div class="card-details">
+                            <p><span>Where:</span> <span id="hero-location" class="white-text">Palermo @ Roxy Live</span></p>
+                            <p><span>When:</span> <span id="hero-time" class="white-text">Wed, Sep 14 @ 8:00 pm</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-countdown-bar">
+                <div class="countdown-left">
+                    <img id="countdown-thumb" class="mini-thumb" src="" alt="Upcoming Mini Thumb">
+                    <div class="status-text">
+                        <h4 id="countdown-title">Fetching Nearest Event...</h4>
+                        <p class="alert-text">Registration closes soon!</p>
+                    </div>
+                </div>
+                <div class="countdown-clock">
+                    <div class="time-box">
+                        <span class="time-num" id="days">00</span>
+                        <span class="time-label">DAYS</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-num" id="hours">00</span>
+                        <span class="time-label">HOURS</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-num" id="mins">00</span>
+                        <span class="time-label">MINS</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="why-join-section">
+    <h2 class="section-divider-title">ABOUT THE PLATFORM</h2>
+    
+    <div class="why-join-wrapper">
+        <div class="why-join-header">
+            <span class="sub-accent-tag">WHY JOIN US?</span>
+            <h2 class="main-statement">What is <span class="text-orange">Port</span><span class="text-yellow">Hunt</span>?</h2>
+            
+            <div class="feature-badge-list">
+                <div class="badge-item"><i class="fa-solid fa-bolt"></i> Discover Events Instantly</div>
+                <div class="badge-item"><i class="fa-solid fa-network-wired"></i> Seamless Tech Networking</div>
+                <div class="badge-item"><i class="fa-solid fa-trophy"></i> Elite Level Hackathons</div>
+            </div>
+        </div>
+
+        <div class="why-join-content">
+            <p class="description-para">
+                PortHunt is a state-of-the-art platform designed to bridge the gap between event organizers and attendees. We provide a seamless experience for discovering, joining, and participating in college fests, tech meetups, hackathons, and cultural events.
+            </p>
+            <p class="description-para highlighted-para">
+                Whether you are looking to learn something new, network with industry professionals, or simply have fun, PortHunt is your ultimate destination.
+            </p>
+            
+            <div class="action-footer">
+                <a href="#" class="explore-link">Explore Active Hubs <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="creative-terminal-section">
+    <h2 class="section-divider-title">// CORE HUB SYSTEM OPERATIONAL //</h2>
+
+    <div class="terminal-grid-layout">
+        
+        <div class="terminal-controls">
+            <div class="terminal-intro">
+                <span class="system-tag"><i class="fa-solid fa-circle-nodes"></i> GRID INDEX V2.0</span>
+                <h2 class="terminal-heading">Why Choose Us?</h2>
+                <p class="terminal-subtext">Click on any matrix node below to initialize the terminal showcase module.</p>
+            </div>
+
+            <div class="matrix-tabs-stack">
+                <div class="matrix-tab-item active" data-target="easy-discovery">
+                    <div class="tab-indicator">01</div>
+                    <div class="tab-meta-data">
+                        <h3>Easy Discovery</h3>
+                        <p>Instant Interests Matching Systems</p>
+                    </div>
+                    <i class="fa-solid fa-angle-right tab-arrow"></i>
+                </div>
+                <div class="matrix-tab-item" data-target="earn-rewards">
+                    <div class="tab-indicator">02</div>
+                    <div class="tab-meta-data">
+                        <h3>Earn Rewards</h3>
+                        <p>Proof of Participation Ecosystem</p>
+                    </div>
+                    <i class="fa-solid fa-angle-right tab-arrow"></i>
+                </div>
+                <div class="matrix-tab-item" data-target="connect-hub">
+                    <div class="tab-indicator">03</div>
+                    <div class="tab-meta-data">
+                        <h3>Connect Hub</h3>
+                        <p>Decentralized Peer-to-Peer Networking</p>
+                    </div>
+                    <i class="fa-solid fa-angle-right tab-arrow"></i>
+                </div>
+                <div class="matrix-tab-item" data-target="premium-exp">
+                    <div class="tab-indicator">04</div>
+                    <div class="tab-meta-data">
+                        <h3>Premium Experiences</h3>
+                        <p>Exclusive High-Tier Hackathons Gate</p>
+                    </div>
+                    <i class="fa-solid fa-angle-right tab-arrow"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="terminal-display-screen">
+            <div class="bracket top-left"></div>
+            <div class="bracket top-right"></div>
+            <div class="bracket bottom-left"></div>
+            <div class="bracket bottom-right"></div>
+
+            <div class="screen-content-wrapper">
+                
+                <div class="display-slide active" id="easy-discovery">
+                    <div class="slide-visual-row">
+                        <div class="huge-stat-counter" data-count="94">0%</div>
+                        <div class="stat-label">Discovery Acc. Rate // Optimized</div>
+                    </div>
+                    <h2 class="slide-main-title">FIND YOUR NEXT TRIBE INSTANTLY.</h2>
+                    <p class="slide-paragraph">
+                        No more endless scrolling through dead links. PortHunt deploys a sharp algorithmic categorization grid that aligns live college fests, tech meetups, and open coding sprints directly onto your terminal pipeline based on your stack preferences.
+                    </p>
+                    <div class="tech-spec-bar">
+                        <span>SYSTEM: HOT-RELOAD</span>
+                        <span>LATENCY: 12MS</span>
+                        <span>STATUS: ACTIVE</span>
+                    </div>
+                </div>
+
+                <div class="display-slide" id="earn-rewards">
+                    <div class="slide-visual-row">
+                        <div class="huge-stat-counter" data-count="100">0%</div>
+                        <div class="stat-label">Verified Certifications // Encrypted</div>
+                    </div>
+                    <h2 class="slide-main-title">REWARDS THAT DRIVE VALUE.</h2>
+                    <p class="slide-paragraph">
+                        Every single participation, team validation, and podium finish generates a tamper-proof cryptographic certificate. Lock your achievements, unlock premium digital rewards, and present a verified profile directly to industrial scouts.
+                    </p>
+                    <div class="tech-spec-bar">
+                        <span>LEDGER: VERIFIED</span>
+                        <span>REWARDS: DISTRIBUTION</span>
+                        <span>TYPE: NFT_MINT</span>
+                    </div>
+                </div>
+
+                <div class="display-slide" id="connect-hub">
+                    <div class="slide-visual-row">
+                        <div class="huge-stat-counter" data-count="50">0K+</div>
+                        <div class="stat-label">Active Developers // Linked</div>
+                    </div>
+                    <h2 class="slide-main-title">P2P BRAINSTORM NETWORKING.</h2>
+                    <p class="slide-paragraph">
+                        Bridge gaps with peer developers, UI designers, and technical founders. Our seamless match-matrix lets you assemble cross-functional teams for multi-day hackathons without central system friction.
+                    </p>
+                    <div class="tech-spec-bar">
+                        <span>NODE: SYNCED</span>
+                        <span>PEERS: MERN/MEAN</span>
+                        <span>STRUCTURE: DECENTRALIZED</span>
+                    </div>
+                </div>
+
+                <div class="display-slide" id="premium-exp">
+                    <div class="slide-visual-row">
+                        <div class="huge-stat-counter" data-count="15">0+</div>
+                        <div class="stat-label">Tier-1 Incubation Hubs // Integrated</div>
+                    </div>
+                    <h2 class="slide-main-title">ELITE ACCELERATED PATHWAYS.</h2>
+                    <p class="slide-paragraph">
+                        Gain specialized back-door entries to closed hackathons, corporate innovation bootcamps, and invite-only tech seminars. Build products that matter under direct mentorship of veteran engineering leads.
+                    </p>
+                    <div class="tech-spec-bar">
+                        <span>ACCESS: HIGH-TIER</span>
+                        <span>PARTNERS: SECURE</span>
+                        <span>SESSIONS: VIP_GATE</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="how-to-join-section">
+    <h2 class="section-divider-title">// CORE JOINING PIPELINE INITIALIZED //</h2>
+    
+    <div class="pipeline-header-block">
+        <h2 class="pipeline-title">How to Join?</h2>
+        <p class="pipeline-subtitle">Get started in three simple operational steps</p>
+    </div>
+
+    <div class="pipeline-container">
+        
+        <div class="pipeline-card active">
+            <div class="pipeline-index-shield">
+                <span class="index-num">01</span>
+                <div class="connecting-line"></div>
+            </div>
+            <div class="pipeline-content-box">
+                <div class="box-bracket-top"></div>
+                <div class="step-meta-tag">STAGE_01 // ACCESS</div>
+                <h3 class="step-heading">Create Account</h3>
+                <p class="step-body-text">
+                    Sign up with your email and set up your personalized profile. Configure your engineering stack preferences instantly.
+                </p>
+            </div>
+        </div>
+
+        <div class="pipeline-card">
+            <div class="pipeline-index-shield">
+                <span class="index-num">02</span>
+                <div class="connecting-line"></div>
+            </div>
+            <div class="pipeline-content-box">
+                <div class="box-bracket-top"></div>
+                <div class="step-meta-tag">STAGE_02 // DISCOVER</div>
+                <h3 class="step-heading">Explore Events</h3>
+                <p class="step-body-text">
+                    Browse through hundreds of upcoming events, premium high-tier hackathons, and decentralized workshops matching your profile.
+                </p>
+            </div>
+        </div>
+
+        <div class="pipeline-card">
+            <div class="pipeline-index-shield">
+                <span class="index-num">03</span>
+                </div>
+            <div class="pipeline-content-box">
+                <div class="box-bracket-top"></div>
+                <div class="step-meta-tag">STAGE_03 // EXECUTE</div>
+                <h3 class="step-heading">Register & Attend</h3>
+                <p class="step-body-text">
+                    Secure your spot with a single cryptographic click, assemble your cross-functional team, and experience the pure magic.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="creative-gallery-section">
+    <h2 class="section-divider-title">// STORAGE_NODE_RECORDS // ARCHIVE //</h2>
+    
+    <div class="gallery-intro-container">
+        <div class="gallery-title-wrapper">
+            <h2 class="gallery-main-title">Our Gallery</h2>
+            <p class="gallery-subtitle">Glimpses of our past successful events</p>
+        </div>
+        <div class="gallery-status-counter">
+            <span class="pulse-dot"></span>
+            <span class="counter-text">CAPACITY: 48/50 INDEXED</span>
+        </div>
+    </div>
+
+    <div class="tactical-gallery-grid">
+        
+        <div class="archive-tile tile-banner">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200" alt="Tech Fest Core Arena">
+            <div class="tile-corner tl"></div> <div class="tile-corner tr"></div>
+            <div class="tile-corner bl"></div> <div class="tile-corner br"></div>
+            <div class="tile-overlay-content">
+                <span class="tile-tag">ANNUAL_FEST_2025</span>
+                <h3 class="tile-title">Main Arena Keynote Sprints</h3>
+                <p class="tile-desc">Over 1,200+ engineers joined the core open source distribution panel discussions.</p>
+            </div>
+        </div>
+
+        <div class="archive-tile tile-vertical">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=600" alt="Hackathon Night Phase">
+            <div class="tile-corner tl"></div> <div class="tile-corner tr"></div>
+            <div class="tile-corner bl"></div> <div class="tile-corner br"></div>
+            <div class="tile-overlay-content">
+                <span class="tile-tag">HACK_MATRIX</span>
+                <h3 class="tile-title">36H Dev Run</h3>
+                <p class="tile-desc">Assembling custom P2P tools overnight.</p>
+            </div>
+        </div>
+
+        <div class="archive-tile tile-square">
+            <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=600" alt="Tech Meetup Panel">
+            <div class="tile-corner tl"></div> <div class="tile-corner tr"></div>
+            <div class="tile-corner bl"></div> <div class="tile-corner br"></div>
+            <div class="tile-overlay-content">
+                <span class="tile-tag">DEV_MEET_UP</span>
+                <h3 class="tile-title">MERN Stack Sprint</h3>
+                <p class="tile-desc">Architecting light-weight backend frameworks layout models.</p>
+            </div>
+        </div>
+
+        <div class="archive-tile tile-square">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600" alt="Cultural Stage">
+            <div class="tile-corner tl"></div> <div class="tile-corner tr"></div>
+            <div class="tile-corner bl"></div> <div class="tile-corner br"></div>
+            <div class="tile-overlay-content">
+                <span class="tile-tag">CULTURAL_VOID</span>
+                <h3 class="tile-title">Neon Retro Music Fest</h3>
+                <p class="tile-desc">Closing ceremonies with sharp light visuals and audio synthesizers.</p>
+            </div>
+        </div>
+
+        <div class="archive-tile tile-banner-low">
+            <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1200" alt="Project Exhibition">
+            <div class="tile-corner tl"></div> <div class="tile-corner tr"></div>
+            <div class="tile-corner bl"></div> <div class="tile-corner br"></div>
+            <div class="tile-overlay-content">
+                <span class="tile-tag">EXPO_PHASE_04</span>
+                <h3 class="tile-title">Decentralized Prototype Showcase</h3>
+                <p class="tile-desc">Teams demonstrated localized data distribution setups working without centralized database platforms.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SECTION 6: UPCOMING EVENTS & HACKATHONS (TACTICAL MISSION MATRIX) -->
+<section class="upcoming-missions-section">
+    <h2 class="section-divider-title">// INCOMING_DATA_STREAMS // LIVE_DEPLOYMENTS //</h2>
+    
+    <!-- Header Block with Global Action -->
+    <div class="missions-header-grid">
+        <div class="missions-title-block">
+            <h2 class="missions-main-title">Coming Soon</h2>
+            <p class="missions-subtitle">Gear up for these upcoming mega events and elite-tier hackathons</p>
+        </div>
+        <a href="#" class="view-all-terminal-btn">
+            <span>View All Events</span>
+            <i class="fa-solid fa-square-rss"></i>
+        </a>
+    </div>
+
+    <!-- 2-Column High-Engagement Mission Grid Layout -->
+    <div class="missions-grid-container">
+        
+        <!-- EVENT NODE 1: INNOVATEFEST 2026 -->
+        <div class="mission-item-card">
+            <div class="card-glow-edge"></div>
+            
+            <!-- Card Top Header Meta -->
+            <div class="mission-card-meta">
+                <span class="mission-badge hackathon-badge"><i class="fa-solid fa-terminal"></i> HACKATHON</span>
+                <span class="mission-date-stamp">// LAUNCH: DEC 10, 2026</span>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="mission-card-body">
+                <h3 class="mission-name">InnovateFest 2026</h3>
+                <p class="mission-description">
+                    A 48-hour global hackathon challenging developers to build solutions for a sustainable future. Huge prize pool, cryptographic rewards, and direct industrial mentorship opportunities.
+                </p>
+            </div>
+
+            <!-- Interactive Gamified Engagement Metric (Urgency/FOMO Driver) -->
+            <div class="mission-engagement-bar">
+                <div class="bar-labels">
+                    <span>REGISTRATION MATRIX</span>
+                    <span class="text-orange">84% ALLOCATED</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill fill-84"></div>
+                </div>
+            </div>
+
+            <!-- Footer Action Frame -->
+            <div class="mission-card-footer">
+                <div class="spec-nodes">
+                    <span>48 HOURS RUN</span>
+                    <span>GLOBAL ENTRY</span>
+                </div>
+                <button class="mission-action-btn secure-slot-trigger">
+                    <span>SECURE NODE ACCS</span> <i class="fa-solid fa-angles-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- EVENT NODE 2: FUTURETECH EXPO -->
+        <div class="mission-item-card">
+            <div class="card-glow-edge yellow-glow"></div>
+            
+            <!-- Card Top Header Meta -->
+            <div class="mission-card-meta">
+                <span class="mission-badge summit-badge"><i class="fa-solid fa-atom"></i> TECH SUMMIT</span>
+                <span class="mission-date-stamp">// LAUNCH: JAN 15, 2027</span>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="mission-card-body">
+                <h3 class="mission-name">FutureTech Expo</h3>
+                <p class="mission-description">
+                    Explore the absolute edge of AI matrix integrations, Robotics engineering, and Web3 architectures. Immersive keynote speeches by global industry leaders and hands-on production code workshops.
+                </p>
+            </div>
+
+            <!-- Interactive Gamified Engagement Metric (Urgency/FOMO Driver) -->
+            <div class="mission-engagement-bar">
+                <div class="bar-labels">
+                    <span>REGISTRATION MATRIX</span>
+                    <span class="text-yellow">62% ALLOCATED</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill fill-62"></div>
+                </div>
+            </div>
+
+            <!-- Footer Action Frame -->
+            <div class="mission-card-footer">
+                <div class="spec-nodes">
+                    <span>EXPO INTERACTIVE</span>
+                    <span>VIP SLOTS OPEN</span>
+                </div>
+                <button class="mission-action-btn secure-slot-trigger-yellow">
+                    <span>SECURE NODE ACCS</span> <i class="fa-solid fa-angles-right"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    </main>
+
+    <!-- GLOBAL FOOTER SYSTEM COMPONENT -->
+<footer class="terminal-footer">
+    <div class="footer-master-wrapper">
+        
+        <!-- ROW 1: CORE TECHNICAL AND NETWORKING MATRIX -->
+        <div class="footer-upper-grid">
+            
+            <!-- Matrix Left: Operational System Stats Block -->
+            <div class="footer-system-status">
+                <div class="status-indicator-row">
+                    <span class="live-ping-pulse"></span>
+                    <span class="status-terminal-text">PORTHUNT CORE NODE // OPERATIONAL</span>
+                </div>
+                <div class="system-specs-list">
+                    <div class="spec-inline-item"><span>REGION:</span> <span>GLOBAL-IN</span></div>
+                    <div class="spec-inline-item"><span>SECURE:</span> <span>TLS_1.3_AES</span></div>
+                </div>
+            </div>
+
+            <!-- Matrix Center: Brand Statement & Nav Links -->
+            <div class="footer-brand-hub">
+                <div class="footer-logo">
+                    <span class="text-orange">Port</span><span class="text-yellow">Hunt</span>
+                </div>
+                <p class="footer-mission-statement">
+                    Building the future of event management, one community at a time.
+                </p>
+                <!-- Quick Navigation Grid Area -->
+                <div class="footer-micro-links">
+                    <a href="#">Index</a>
+                    <a href="#">Security</a>
+                    <a href="#">API_Docs</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+
+            <!-- Matrix Right: Interactive Social Command Handles -->
+            <div class="footer-social-console">
+                <span class="social-header-label">// CONNECT SYSTEM //</span>
+                <div class="social-icons-row">
+                    <a href="#" class="social-console-btn" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="social-console-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-console-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-console-btn" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Horizontal Mechanical Split Line Ruler Divider -->
+        <div class="footer-laser-line"></div>
+
+        <!-- ROW 2: LEGAL TERMINAL STAMP -->
+        <div class="footer-bottom-row">
+            <div class="legal-stamp-text">
+                &copy; 2026 PortHunt. All structural rights reserved // PIPELINE_V2.0.
+            </div>
+            <div class="terminal-time-stamp">
+                SYS_TIME: <span id="footer-live-clock">00:00:00 UTC</span>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
