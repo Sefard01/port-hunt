@@ -1705,3 +1705,505 @@ body {
         text-align: center;
     }
 }
+
+
+/* ---------------------------------------------------- */
+/* AUTHENTICATED LOGGED_IN MODULE: EXPLORE EVENTS FEED   */
+/* ---------------------------------------------------- */
+.dashboard-explorer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Header Grid Formatting Matrix with Filter Track */
+.explorer-header-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
+    padding-bottom: 24px;
+}
+
+.explorer-meta-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.explorer-main-title {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.explorer-subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    letter-spacing: 0.5px;
+}
+
+/* MATRIX HORIZONTAL FILTER TRACK BAR BUTTONS */
+.matrix-filter-bar {
+    display: flex;
+    gap: 8px;
+    background-color: #0b111a;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 6px;
+}
+
+.filter-tag-btn {
+    background-color: transparent;
+    border: none;
+    color: #64748b;
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filter-tag-btn:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Filter Selection Lock Active Toggle (Changed from yellow to tactical orange highlight) */
+.filter-tag-btn.active {
+    background-color: #0f1622;
+    color: #ff6b35; 
+    border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+/* Master Balanced 4-Column Cards Container */
+.explorer-feed-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+/* AUTH DATA CARD CORE BLOCK DESIGN MODULE */
+.event-feed-card {
+    background-color: #0b111a;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Encapsulates the banner cleanly within corners */
+    transition: transform 0.18s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.event-feed-card:hover {
+    background-color: #0f1622;
+    border-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+}
+
+/* Banner Component System Layout */
+.feed-card-banner {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.feed-card-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(105%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.event-feed-card:hover .feed-card-banner img {
+    transform: scale(1.05); /* Micro zoom effect on card track hover */
+}
+
+/* Inner padding container for content beneath banner */
+.feed-card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+}
+
+/* Top border flair line mechanics */
+.card-edge-flare {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    opacity: 0.15;
+    z-index: 2;
+    transition: opacity 0.15s ease;
+}
+
+.orange-flare { background-color: #ff6b35; }
+.gray-flare { background-color: #475569; } /* Replaced yellow flares with sleek tactical grays */
+
+.event-feed-card:hover .card-edge-flare {
+    opacity: 1;
+}
+
+/* Card Upper Area Elements Rules layout alignment */
+.feed-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feed-category-badge {
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 3px 8px;
+    letter-spacing: 0.5px;
+}
+
+/* Color palettes without yellow elements */
+.tech-badge { color: #ff6b35; background-color: rgba(255, 107, 53, 0.05); }
+.arts-badge { color: #94a3b8; background-color: rgba(148, 163, 184, 0.05); }
+.business-badge { color: #ff6b35; background-color: rgba(255, 107, 53, 0.05); }
+.entertainment-badge { color: #94a3b8; background-color: rgba(148, 163, 184, 0.05); }
+
+.feed-live-node {
+    font-size: 12px;
+    color: #9e9e9e;
+    transition: color 0.15s ease;
+}
+
+.event-feed-card:hover .feed-live-node {
+    color: #f8f8f8;
+}
+
+/* Content Typography Elements Layer */
+.feed-event-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+}
+
+.feed-event-meta {
+    display: flex;
+    align-items: center;
+}
+
+.meta-date-node {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Action Execution Button Module Parameters design */
+.feed-action-trigger {
+    background-color: #070b12;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 12px 16px;
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto; 
+    transition: all 0.12s ease;
+}
+
+.feed-action-trigger i {
+    font-size: 10px;
+    color: #475569;
+    transition: transform 0.12s ease, color 0.12s ease;
+}
+
+.feed-action-trigger:hover {
+    border-color: #ff6b35; 
+    background-color: #0b111a;
+}
+
+.feed-action-trigger:hover i {
+    color: #ff6b35;
+    transform: translate(2px, -2px); 
+}
+
+.event-feed-card.filtered-out {
+    display: none !important;
+}
+
+/* SCREEN RE-SIZE ADAPTER BREAKPOINTS RULES PROFILES */
+@media (max-width: 1100px) {
+    .explorer-feed-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 850px) {
+    .explorer-header-block {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .matrix-filter-bar { width: 100%; overflow-x: auto; } 
+    .explorer-feed-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 550px) {
+    .explorer-feed-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------- */
+/* TACTICAL REGISTRATION MODAL WITH BACKDROP BLUR LINK  */
+/* ---------------------------------------------------- */
+
+/* Master Background Dark Tint and Frost Blur Layer Overlap */
+.auth-overlay-matrix {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(5, 8, 15, 0.75); /* Deep void dark layout shade opacity */
+    backdrop-filter: blur(10px) saturate(140%); /* Frosted crystal blur engine */
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    z-index: 9999; /* Higher configuration hierarchy index anchor layer override */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+    /* Animation initial values setup properties mapping states */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Visibility Control Utility class activated by target trigger clicks script */
+.auth-overlay-matrix.portal-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Center Glassmorphic Window Container Box */
+.auth-modal-window {
+    background-color: rgba(11, 17, 26, 0.85); /* Container dark baseline tint value transparency */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    max-width: 460px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 107, 53, 0.02);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transform: scale(0.96) translateY(10px);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-overlay-matrix.portal-active .auth-modal-window {
+    transform: scale(1) translateY(0); /* Micro mechanical snap frame glide effect on open */
+}
+
+/* Modal Control Top Bar row formatting layout mapping */
+.modal-control-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    background-color: #05080f;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.console-access-label {
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 800;
+    color: #475569;
+    letter-spacing: 1px;
+}
+
+.modal-close-trigger {
+    background-color: transparent;
+    border: none;
+    color: #475569;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.1s ease;
+}
+
+.modal-close-trigger:hover {
+    color: #ff6b35; /* Orange error flash line boundary feedback trace */
+}
+
+/* Content Frame Padding Wrapper rules specifications */
+.modal-body-wrapper {
+    padding: 35px 40px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.modal-branding-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modal-main-title {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.modal-subtitle {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+/* Core Internal Form Grid parameters adjustments */
+.tactical-auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tactical-field-label {
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 800;
+    color: #475569;
+    letter-spacing: 0.5px;
+}
+
+/* Mechanical Input Shell housing design structure maps */
+.field-input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #05080f;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    position: relative;
+    transition: border-color 0.12s ease;
+}
+
+.field-icon-node {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #334155;
+    border-right: 1px solid rgba(255, 255, 255, 0.02);
+    transition: color 0.12s ease;
+}
+
+.tactical-core-input {
+    width: 100%;
+    height: 42px;
+    background-color: transparent;
+    border: none;
+    outline: none !important;
+    padding: 0 16px;
+    color: #ffffff;
+    font-size: 13.5px;
+}
+
+.tactical-core-input::placeholder {
+    color: #334155;
+}
+
+/* Focus Overlays execution parameters rules transformation layer */
+.field-input-wrapper:focus-within {
+    border-color: rgba(255, 107, 53, 0.4); /* Glows system orange tint bounds on selection focus */
+}
+
+.field-input-wrapper:focus-within .field-icon-node {
+    color: #ff6b35;
+}
+
+/* Large Submit Access Execution Action Block structure button styling */
+.auth-submit-trigger {
+    background-color: #ff6b35; /* Orange primary core color lock */
+    border: 1px solid #ff6b35;
+    width: 100%;
+    height: 44px;
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 8px;
+    transition: all 0.15s ease;
+}
+
+.auth-submit-trigger i {
+    font-size: 10px;
+    transition: transform 0.12s ease;
+}
+
+.auth-submit-trigger:hover {
+    background-color: #e0531f;
+    border-color: #e0531f;
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.25);
+}
+
+.auth-submit-trigger:hover i {
+    transform: translateX(3px); /* Interactive velocity glide arrow shift */
+}
+
+/* Lower Muted Navigation routing anchors elements formatting alignments */
+.modal-footer-redirect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12.5px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.04);
+    padding-top: 24px;
+    margin-top: 6px;
+}
+
+.redirect-muted-text {
+    color: #475569;
+}
+
+.redirect-active-link {
+    color: #ff6b35; /* Orange redirect trigger anchor instead of yellow */
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.1s ease;
+}
+
+.redirect-active-link:hover {
+    text-decoration: underline;
+}
+
+/* Micro Device Adapters Scaling rules translations metrics mapping dimensions */
+@media (max-width: 500px) {
+    .modal-body-wrapper { padding: 30px 24px; }
+}

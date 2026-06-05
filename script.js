@@ -266,3 +266,298 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000); // Ticks precisely every 1000 milliseconds refresh cycle boundary frame
     }
 });
+
+// --- 7. MODULE: LOGGED_IN DASHBOARD FEED FILTER TRACK ---
+document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = document.querySelectorAll(".filter-tag-btn");
+    const eventCards = document.querySelectorAll(".event-feed-card");
+
+    filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            // 1. Shift navigation active tracker status mapping elements
+            filterButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            // 2. Extract configuration target parameters value data string
+            const selectedFilter = button.getAttribute("data-filter");
+
+            // 3. Iterate cards collection layout metrics properties execution
+            eventCards.forEach(card => {
+                const cardCategory = card.getAttribute("data-category");
+
+                if (selectedFilter === "all" || cardCategory === selectedFilter) {
+                    card.classList.remove("filtered-out");
+                } else {
+                    card.classList.add("filtered-out");
+                }
+            });
+        });
+    });
+});
+
+// ============================================================================
+// CONFIGURATION ENGINE: INDEXEDDB IDENTITY STORAGE MATRIX
+// ============================================================================
+const DB_NAME = "PortHunt_Core_Storage";
+const DB_VERSION = 1;
+const STORE_NAME = "encrypted_user_registry";
+let dbInstance = null;
+
+// --- 1. INITIALIZE DATA SYSTEM LAYER ---
+function initRegistryDatabase() {
+    return new Promise((resolve, reject) => {
+        const dbRequest = indexedDB.open(DB_NAME, DB_VERSION);
+
+        dbRequest.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                // Email acts as our unique central indexing data anchor key
+                db.createObjectStore(STORE_NAME, { keyPath: "userEmail" });
+            }
+        };
+
+        dbRequest.onsuccess = (event) => {
+            dbInstance = event.target.result;
+            console.log("// STORAGE_ENGINE // CONNECTED // INDEXEDDB_ONLINE");
+            resolve(dbInstance);
+        };
+
+        dbRequest.onerror = (event) => {
+            console.error("// STORAGE_ENGINE // CRITICAL_FAILURE //", event.target.error);
+            reject(event.target.error);
+        };
+    });
+}
+
+// --- 2. PERSIST USER NODE TO STORAGE ---
+function registerUserNode(fullName, email, keypassHash) {
+    return new Promise((resolve, reject) => {
+        if (!dbInstance) return reject("Database context instance not initialized.");
+
+        const transaction = dbInstance.transaction([STORE_NAME], "readwrite");
+        const store = transaction.objectStore(STORE_NAME);
+
+        // Run checking request to avoid user identity overlap conflicts
+        const checkRequest = store.get(email.toLowerCase().trim());
+
+        checkRequest.onsuccess = () => {
+            if (checkRequest.result) {
+                reject("NODE_CONFLICT: Identity record already authenticated inside matrix.");
+                return;
+            }
+
+            // Map data payload parameters directly
+            const newIdentityDocument = {
+                userEmail: email.toLowerCase().trim(),
+                userFullName: fullName.trim(),
+                userKeypass: keypassHash,
+                timestamp: new Date().toISOString()
+            };
+
+            const saveRequest = store.put(newIdentityDocument);
+
+            saveRequest.onsuccess = () => {
+                resolve("// INITIALIZATION_SUCCESS // Data synchronized cleanly inside IndexedDB.");
+            };
+
+            saveRequest.onerror = () => {
+                reject("WRITE_FAULT: Failed to record structured identity payload block.");
+            };
+        };
+    });
+}
+
+// ============================================================================
+// SYSTEM WORKFLOW HANDLERS & MODAL BINDINGS INTERFACE
+// ============================================================================
+document.addEventListener("DOMContentLoaded", async () => {
+    
+    // Core Database Initialization Execution Line
+    try {
+        await initRegistryDatabase();
+    } catch (err) {
+        console.error("System storage layers failed to lock target paths.");
+    }
+
+    // --- A. MODAL POPUP VISIBILITY LAYER CONTROL ---
+    const registrationPortal = document.getElementById("registration-modal-portal");
+    const closeModalBtn = document.getElementById("close-modal-engine");
+    
+    // Hooks navbar ".trigger-registration-popup" node click parameters directly
+    const openTriggers = document.querySelectorAll(".trigger-registration-popup, .btn-register");
+
+    const openPortalHandler = (e) => {
+        e.preventDefault();
+        if (registrationPortal) {
+            registrationPortal.classList.add("portal-active");
+            document.body.style.overflow = "hidden"; // Lock global viewport scroll track
+        }
+    };
+
+    const closePortalHandler = () => {
+        if (registrationPortal) {
+            registrationPortal.classList.remove("portal-active");
+            document.body.style.overflow = ""; // Restores base document scroll matrix
+        }
+    };
+
+    openTriggers.forEach(trigger => trigger.addEventListener("click", openPortalHandler));
+    if (closeModalBtn) closeModalBtn.addEventListener("click", closePortalHandler);
+
+    // Escape and Void Overlay Closes Safeguard Integration
+    window.addEventListener("click", (e) => { if (e.target === registrationPortal) closePortalHandler(); });
+    window.addEventListener("keydown", (e) => { if (e.key === "Escape") closePortalHandler(); });
+
+
+    // --- B. FORM CAPTURE & REWRITTEN INDEXEDDB REGISTRATION PIPELINE ---
+    const signupForm = document.getElementById("core-signup-form");
+    
+    if (signupForm) {
+        signupForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            // Direct ID extraction mapping paths
+            const fullName = document.getElementById("reg-fullname").value;
+            const email = document.getElementById("reg-email").value;
+            const password = document.getElementById("reg-password").value;
+
+            try {
+                // Pipe data packages to storage execution method
+                const executionResult = await registerUserNode(fullName, email, password);
+                console.log(executionResult);
+
+                alert("✨ ACCS INITIALIZATION SUCCESSFUL!\nIdentity packet locked inside local client registry.");
+                
+                // Clear UI field matrix elements cleanly
+                signupForm.reset();
+                closePortalHandler();
+
+            } catch (systemFaultMessage) {
+                // Handle duplicate identity records or write faults gracefully
+                alert("⚠️ SYSTEM REFUSAL:\n" + systemFaultMessage);
+            }
+        });
+    }
+});
+
+// ============================================================================
+// SYSTEM LOGIN HANDLER MATRIX & CROSS-VERIFICATION PIPELINE
+// ============================================================================
+
+// --- 1. LOGIN CONTROLLER: IDENTITY MATCHING VALIDATOR METHOD ---
+function validateUserSession(email, keypassHash) {
+    return new Promise((resolve, reject) => {
+        // DB_NAME and STORE_NAME reference from your core script registry configuration
+        if (!dbInstance) return reject("Database context pipeline not initialized.");
+
+        const transaction = dbInstance.transaction([STORE_NAME], "readonly");
+        const store = transaction.objectStore(STORE_NAME);
+
+        // Fetch user object using email as query target path key
+        const fetchRequest = store.get(email.toLowerCase().trim());
+
+        fetchRequest.onsuccess = () => {
+            const registeredUserDoc = fetchRequest.result;
+
+            if (!registeredUserDoc) {
+                reject("AUTH_FAILED: Identity coordinates not found inside matrix registry.");
+                return;
+            }
+
+            // Password hashing structural comparison match sequence test
+            if (registeredUserDoc.userKeypass === keypassHash) {
+                resolve({
+                    status: "GRANTED",
+                    user: {
+                        name: registeredUserDoc.userFullName,
+                        email: registeredUserDoc.userEmail
+                    }
+                });
+            } else {
+                reject("AUTH_FAILED: Security keypass hash mismatch.");
+            }
+        };
+
+        fetchRequest.onerror = () => {
+            reject("QUERY_FAULT: Matrix error reading record stream from client storage.");
+        };
+    });
+}
+
+// --- 2. POPUP DYNAMICS & INTERACTION IMPLEMENTATION ---
+document.addEventListener("DOMContentLoaded", () => {
+    const loginPortal = document.getElementById("login-modal-portal");
+    const registrationPortal = document.getElementById("registration-modal-portal");
+    const closeLoginBtn = document.getElementById("close-login-engine");
+    
+    const loginTriggers = document.querySelectorAll(".trigger-login-popup, .btn-login");
+
+    // Modal Control Functions 
+    const openLoginHandler = (e) => {
+        e.preventDefault();
+        if (loginPortal) {
+            // Close registration modal if it's already open to avoid UI overlap stack
+            if (registrationPortal) registrationPortal.classList.remove("portal-active");
+            
+            loginPortal.classList.add("portal-active");
+            document.body.style.overflow = "hidden";
+        }
+    };
+
+    const closeLoginHandler = () => {
+        if (loginPortal) {
+            loginPortal.classList.remove("portal-active");
+            document.body.style.overflow = "";
+        }
+    };
+
+    loginTriggers.forEach(trigger => trigger.addEventListener("click", openLoginHandler));
+    if (closeLoginBtn) closeLoginBtn.addEventListener("click", closeLoginHandler);
+
+    // Escape and Void Overlay Layer Safeguard
+    window.addEventListener("click", (e) => { if (e.target === loginPortal) closeLoginHandler(); });
+    window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLoginHandler(); });
+
+    // Switch between modals dynamically via text anchor link click
+    const switchToSignupLink = document.getElementById("switch-to-signup");
+    if(switchToSignupLink) {
+        switchToSignupLink.addEventListener("click", () => {
+            closeLoginHandler();
+            // Let the registration trigger module execute immediately after
+        });
+    }
+
+    // --- 3. SUBMIT EVENT CAPTURE & DB QUERY VALIDATION ---
+    const loginForm = document.getElementById("core-login-form");
+    
+    if (loginForm) {
+        loginForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            // Direct mapping parameters path from form IDs
+            const email = document.getElementById("login-email").value;
+            const password = document.getElementById("login-password").value;
+
+            try {
+                // Fire verification routine promise request 
+                const authResult = await validateUserSession(email, password);
+                console.log("// ACCESS_STATUS // AUTHORIZED", authResult);
+
+                alert(`⚡ ACCESS GRANTED!\nWelcome back system user: ${authResult.user.name.toUpperCase()}`);
+                
+                // Save user credentials schema token inside local sessionStorage to retain logged-in environment state
+                sessionStorage.setItem("active_user_node", JSON.stringify(authResult.user));
+                
+                loginForm.reset();
+                closeLoginHandler();
+
+                // Dynamic Action execution reload: Refresh page to display "Explore Events" segment module grid panels
+                window.location.reload();
+
+            } catch (authFaultMessage) {
+                // Deny entry if passwords mismatched or email missing entirely inside store indexes
+                alert("❌ ACCESS DENIED:\n" + authFaultMessage);
+            }
+        });
+    }
+});

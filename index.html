@@ -13,31 +13,30 @@
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo-container">
-            <div class="logo-icon">
-                <span class="icon-p">P</span>
-            </div>
-            <span class="logo-text">Port<span class="highlight">Hunt</span></span>
+<header class="navbar">
+    <div class="logo-container">
+        <div class="logo-icon">
+            <span class="icon-p">P</span>
         </div>
-        <div class="nav-right">
-            <nav class="nav-links">
-                <a href="#" class="nav-item">Events</a>
-                <a href="#" class="nav-item">Hackathons</a>
-                <a href="#" class="nav-item">Gallery</a>
-                <a href="#" class="nav-item">Notice</a>
-            </nav>
-            <div class="search-container">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" placeholder="Search..." class="search-input">
-            </div>
-            <div class="auth-buttons">
-                <a href="#" class="btn btn-login">Login</a>
-                <a href="#" class="btn btn-register">Register</a>
-            </div>
+        <span class="logo-text">Port<span class="highlight">Hunt</span></span>
+    </div>
+    <div class="nav-right">
+        <nav class="nav-links">
+            <a href="#" class="nav-item">Events</a>
+            <a href="#" class="nav-item">Hackathons</a>
+            <a href="#" class="nav-item">Gallery</a>
+            <a href="#" class="nav-item">Notice</a>
+        </nav>
+        <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" placeholder="Search..." class="search-input">
         </div>
-    </header>
-
+        <div class="auth-buttons">
+    <a href="#" class="btn btn-login trigger-login-popup">Login</a>
+    <a href="#" class="btn btn-register trigger-registration-popup">Register</a>
+</div>
+    </div>
+</header>
     <main class="page-container">
 
         <section class="hero-block">
@@ -500,6 +499,115 @@
     </div>
 </section>
 
+<section class="dashboard-explorer-section">
+    <h2 class="section-divider-title">// SYSTEM_FEED // LOGGED_IN_ACTIVE //</h2>
+
+    <div class="explorer-header-block">
+        <div class="explorer-meta-title">
+            <h2 class="explorer-main-title">Explore Events</h2>
+            <p class="explorer-subtitle">Find the perfect event tailored to your custom interest matrix</p>
+        </div>
+
+        <div class="matrix-filter-bar">
+            <button class="filter-tag-btn active" data-filter="all">All</button>
+            <button class="filter-tag-btn" data-filter="technology">Technology</button>
+            <button class="filter-tag-btn" data-filter="arts">Arts</button>
+            <button class="filter-tag-btn" data-filter="business">Business</button>
+            <button class="filter-tag-btn" data-filter="entertainment">Entertainment</button>
+        </div>
+    </div>
+
+    <div class="explorer-feed-grid" id="events-matrix-container">
+        
+        <div class="event-feed-card" data-category="technology">
+            <div class="card-edge-flare orange-flare"></div>
+            <div class="feed-card-banner">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600" alt="Tech Innovators Summit">
+            </div>
+            <div class="feed-card-content">
+                <div class="feed-card-header">
+                    <span class="feed-category-badge tech-badge">TECHNOLOGY</span>
+                    <span class="feed-live-node"><i class="fa-solid fa-circle-nodes"></i></span>
+                </div>
+                <h3 class="feed-event-title">Tech Innovators Summit</h3>
+                <div class="feed-event-meta">
+                    <span class="meta-date-node"><i class="fa-regular fa-calendar-days"></i> Oct 15, 2026</span>
+                </div>
+                <button class="feed-action-trigger view-details-btn">
+                    <span>View Details</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="event-feed-card" data-category="arts">
+            <div class="card-edge-flare gray-flare"></div>
+            <div class="feed-card-banner">
+                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=600" alt="Creative Arts Workshop">
+            </div>
+            <div class="feed-card-content">
+                <div class="feed-card-header">
+                    <span class="feed-category-badge arts-badge">ARTS</span>
+                    <span class="feed-live-node"><i class="fa-solid fa-palette"></i></span>
+                </div>
+                <h3 class="feed-event-title">Creative Arts Workshop</h3>
+                <div class="feed-event-meta">
+                    <span class="meta-date-node"><i class="fa-regular fa-calendar-days"></i> Nov 02, 2026</span>
+                </div>
+                <button class="feed-action-trigger view-details-btn">
+                    <span>View Details</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="event-feed-card" data-category="business">
+            <div class="card-edge-flare orange-flare"></div>
+            <div class="feed-card-banner">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600" alt="Startup Pitch Night">
+            </div>
+            <div class="feed-card-content">
+                <div class="feed-card-header">
+                    <span class="feed-category-badge business-badge">BUSINESS</span>
+                    <span class="feed-live-node"><i class="fa-solid fa-briefcase"></i></span>
+                </div>
+                <h3 class="feed-event-title">Startup Pitch Night</h3>
+                <div class="feed-event-meta">
+                    <span class="meta-date-node"><i class="fa-regular fa-calendar-days"></i> Nov 18, 2026</span>
+                </div>
+                <button class="feed-action-trigger view-details-btn">
+                    <span>View Details</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="event-feed-card" data-category="entertainment">
+            <div class="card-edge-flare gray-flare"></div>
+            <div class="feed-card-banner">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600" alt="Music Festival 2026">
+            </div>
+            <div class="feed-card-content">
+                <div class="feed-card-header">
+                    <span class="feed-category-badge entertainment-badge">ENTERTAINMENT</span>
+                    <span class="feed-live-node"><i class="fa-solid fa-music"></i></span>
+                </div>
+                <h3 class="feed-event-title">Music Festival 2026</h3>
+                <div class="feed-event-meta">
+                    <span class="meta-date-node"><i class="fa-regular fa-calendar-days"></i> Dec 05, 2026</span>
+                </div>
+                <button class="feed-action-trigger view-details-btn">
+                    <span>View Details</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
     </main>
 
     <!-- GLOBAL FOOTER SYSTEM COMPONENT -->
@@ -567,6 +675,126 @@
     </div>
 </footer>
 
+<!-- SYSTEM MODAL OVERLAY CONSOLE (REGISTRATION POPUP) -->
+<div class="auth-overlay-matrix" id="registration-modal-portal">
+    <!-- Glassmorphic Containment Box -->
+    <div class="auth-modal-window">
+        
+        <!-- Top Mechanical Control Header -->
+        <div class="modal-control-header">
+            <span class="console-access-label">// SECURE_IDENTITY_PROVISION //</span>
+            <button class="modal-close-trigger" id="close-modal-engine" aria-label="Close Portal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Main Registration Form Container -->
+        <div class="modal-body-wrapper">
+            <div class="modal-branding-block">
+                <h2 class="modal-main-title">Create PortHunt Account</h2>
+                <p class="modal-subtitle">Initialize your core node details to access custom event streams</p>
+            </div>
+
+            <!-- Standardized Form with Target Core ID Hooks -->
+            <form class="tactical-auth-form" id="core-signup-form">
+                
+                <!-- Input Group 1: Full Name -->
+                <div class="form-input-container">
+                    <label class="tactical-field-label" for="reg-fullname">FULL_NAME_STRING</label>
+                    <div class="field-input-wrapper">
+                        <span class="field-icon-node"><i class="fa-regular fa-user"></i></span>
+                        <input type="text" id="reg-fullname" class="tactical-core-input" placeholder="e.g. Himanshu Singh" required autocomplete="name">
+                    </div>
+                </div>
+
+                <!-- Input Group 2: Email Routing -->
+                <div class="form-input-container">
+                    <label class="tactical-field-label" for="reg-email">EMAIL_ROUTING_ADDRESS</label>
+                    <div class="field-input-wrapper">
+                        <span class="field-icon-node"><i class="fa-regular fa-envelope"></i></span>
+                        <input type="email" id="reg-email" class="tactical-core-input" placeholder="name@domain.com" required autocomplete="email">
+                    </div>
+                </div>
+
+                <!-- Input Group 3: Core Security Password -->
+                <div class="form-input-container">
+                    <label class="tactical-field-label" for="reg-password">SECURITY_KEYPASS_HASH</label>
+                    <div class="field-input-wrapper">
+                        <span class="field-icon-node"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" id="reg-password" class="tactical-core-input" placeholder="••••••••••••" required autocomplete="new-password">
+                    </div>
+                </div>
+
+                <!-- Submit Execution Action Link Row -->
+                <div class="form-action-matrix">
+                    <button type="submit" class="auth-submit-trigger">
+                        <span>INITIALIZE NODE ACCS</span> <i class="fa-solid fa-angles-right"></i>
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Bottom Inline Redirection Link Anchor Block -->
+            <div class="modal-footer-redirect">
+                <span class="redirect-muted-text">Already verified inside the matrix?</span>
+                <a href="#" class="redirect-active-link">Login here</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="auth-overlay-matrix" id="login-modal-portal">
+    <div class="auth-modal-window">
+        
+        <div class="modal-control-header">
+            <span class="console-access-label">// IDENTITY_AUTHENTICATION_GATE //</span>
+            <button class="modal-close-trigger" id="close-login-engine" aria-label="Close Portal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="modal-body-wrapper">
+            <div class="modal-branding-block">
+                <h2 class="modal-main-title">Welcome Back Node</h2>
+                <p class="modal-subtitle">Provide your matrix credentials to re-verify session logs</p>
+            </div>
+
+            <form class="tactical-auth-form" id="core-login-form">
+
+                <div class="form-input-container">
+                    <label class="tactical-field-label" for="login-email">EMAIL_ROUTING_ADDRESS</label>
+                    <div class="field-input-wrapper">
+                        <span class="field-icon-node"><i class="fa-regular fa-envelope"></i></span>
+                        <input type="email" id="login-email" class="tactical-core-input" placeholder="name@domain.com" required autocomplete="email">
+                    </div>
+                </div>
+
+                <div class="form-input-container">
+                    <label class="tactical-field-label" for="login-password">SECURITY_KEYPASS_HASH</label>
+                    <div class="field-input-wrapper">
+                        <span class="field-icon-node"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" id="login-password" class="tactical-core-input" placeholder="••••••••••••" required autocomplete="current-password">
+                    </div>
+                </div>
+
+                <div class="form-action-matrix">
+                    <button type="submit" class="auth-submit-trigger">
+                        <span>VERIFY & SIGN_IN</span> <i class="fa-solid fa-angles-right"></i>
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="modal-footer-redirect">
+                <span class="redirect-muted-text">New coordinate asset here?</span>
+                <a href="#" class="redirect-active-link trigger-registration-popup" id="switch-to-signup">Create account</a>
+            </div>
+        </div>
+
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
