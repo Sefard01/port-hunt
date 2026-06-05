@@ -1,6 +1,6 @@
 # ⚡ PortHunt — Dynamic Event Hub System
 
-![PortHunt Banner](banner.png)
+![PortHunt Banner]([banner.png](https://github.com/Sefard01/port-hunt/blob/main/Assets/images/logo.png?raw=true))
 
 > **PortHunt** is a state-of-the-art interactive platform designed to bridge the gap between event organizers and attendees. Built with a hardcore tactical UI approach, it features clean geometry, interactive console grids, and an optimized user experience for tracking tech meetups, hackathons, and cultural events.
 
